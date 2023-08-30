@@ -17,7 +17,26 @@ struct Home: View {
                             .font(.title)
                             .bold()
                         Text(item.fecha ?? Date(), style: .date)
-                    }
+                    }.contextMenu(ContextMenu(menuItems: {
+                        Button(action:{
+                            print("Editar")
+                        }){
+                            Label(title:{
+                                Text("Editar")
+                            }, icon: {
+                                Image(systemName: "pencil")
+                            })
+                        }
+                        Button(action:{
+                            model.deleteData(item: item, context: context)
+                        }){
+                            Label(title:{
+                                Text("Eliminar")
+                            }, icon: {
+                                Image(systemName: "trash")
+                            })
+                        }
+                    }))
                 }
             }.navigationTitle("Notas")
                 .navigationBarItems(trailing:
