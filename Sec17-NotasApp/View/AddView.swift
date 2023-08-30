@@ -4,6 +4,7 @@ import SwiftUI
 struct AddView: View {
     
     @ObservedObject var model: ViewModel
+    @Environment(\.managedObjectContext) var context
     
     var body: some View {
         VStack{
@@ -16,7 +17,7 @@ struct AddView: View {
             DatePicker("Seleccionar Fecha", selection: $model.fecha)
             Spacer()
             Button(action:{
-                
+                model.saveData(context: context)
             }){
                 Label(
                     title: {Text("Guardar").foregroundColor(.white).bold()},
