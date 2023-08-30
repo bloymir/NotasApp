@@ -4,6 +4,7 @@ import SwiftUI
 struct Home: View {
     
     @StateObject var model = ViewModel()
+    @Environment(\.managedObjectContext) var context
     @FetchRequest(entity: Notas.entity(), sortDescriptors: [NSSortDescriptor(key: "fecha", ascending: true)], animation: .spring()) var results: FetchedResults<Notas>
     
     var body: some View {

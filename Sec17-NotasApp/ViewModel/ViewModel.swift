@@ -27,4 +27,17 @@ class ViewModel: ObservableObject {
             print("No guardo ", error.localizedDescription)
         }
     }
+    
+    func deleteData(item: Notas, context: NSManagedObjectContext){
+        context.delete(item)
+        
+        //try! context.save()
+        do {
+            try context.save()
+            print("Elimino")
+        } catch let error as NSError {
+            //Alerta al usuario
+            print("No elimino ", error.localizedDescription)
+        }
+    }
 }
